@@ -30,7 +30,7 @@ export default function Home() {
             {
                 isLoading ? 
                 <>
-                    <Loader inline="centerd" active>
+                    <Loader active>
                         Loading
                     </Loader>
                 </> : 

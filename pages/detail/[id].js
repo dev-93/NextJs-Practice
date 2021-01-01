@@ -1,8 +1,19 @@
 import axios from 'axios';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { Loader } from 'semantic-ui-react';
 import Item from '../../src/component/item';
 
 const Post = ({item, name}) => {
+    const router = useRouter();
+    
+    if(router.isFallback) {
+        return (
+            <div style={{padding: "100px 0"}}>
+                <Loader active inline="centered">Loading</Loader>
+            </div>
+        )
+    }
     return (
         <>
             {item && (
@@ -21,14 +32,18 @@ const Post = ({item, name}) => {
 export default Post;
 
 export async function getStaticPaths() {
+    const apiUrl = process.env.apiUrl;
+    const res = await axios.get(apiUrl);
+    const data = res.data;
+
     return {
-        paths: [
-            { params: { id:'740' } },
-            { params: { id:'730' } },
-            { params: { id:'729' } },
-        ],
-        fallback: true
-      };
+        paths: data.slice(0,9).map((item) => ({
+            params: {
+                id: item.id.toString(),
+            },
+        })),
+        fallback: true,
+    };
 }
 
 export async function getStaticProps(context) {

@@ -1,7 +1,6 @@
 import { Button } from "semantic-ui-react";
 
 const Item = ({item}) => {
-    console.log(item);
     const {
         image_link, 
         name,
@@ -18,7 +17,7 @@ const Item = ({item}) => {
             </div>
             <div>
                 <strong>{name}</strong>
-                <string>${price}</string>
+                <strong>${price}</strong>
                 <span>
                     {category ? `${category}/`: ''}
                     {product_type}

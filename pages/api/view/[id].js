@@ -1,5 +1,5 @@
 export default (req, res) => {
     res.statusCode = 200
-    res.json({ name: 'view' })
+    res.json({ id: req.query.id })
   }
   

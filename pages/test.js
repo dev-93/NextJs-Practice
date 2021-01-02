@@ -13,17 +13,20 @@ const Test = () => {
         {
             id: 1,
             username: '푸들',
-            ailas: 'puppy'
+            ailas: 'puppy',
+            isActive: false
         },
         {
             id: 2,
             username: '펭귄',
-            ailas: '펭수'
+            ailas: '펭수',
+            isActive: true
         },
         {
             id: 3,
             username: '래미안',
-            ailas: 'aaa'
+            ailas: 'aaa',
+            isActive: false
         }
     ]);
 
@@ -70,6 +73,14 @@ const Test = () => {
 
     const onRemove = (id) => {
         setUsers(users.filter(user => user.id !== id));
+    };
+
+    const onToggle = (id)=> {
+        setUsers(
+            users.map((user) => 
+                user.id === id ? {...user, isActive: !user.isActive } : user 
+            )
+        )
     }
 
     return (
@@ -89,7 +100,7 @@ const Test = () => {
                 </div>
 
                 <div style={{marginTop:'50px'}}>
-                    <UserList users={users} onRemove={onRemove}/>
+                    <UserList users={users} onRemove={onRemove} onToggle={onToggle}/>
                 </div>
             </div>
         </>

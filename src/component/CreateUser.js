@@ -9,7 +9,7 @@ function CreateUser(props) {
         <Form.Field inline>
             <input placeholder="Ailas" name="ailas" onChange={props.onChange} value={props.ailas} />
         </Form.Field>
-        <Button color="blue" onClick={props.onSubmit}>추가하기</Button>
+        <Button color="blue" onClick={props.onSubmit}>생성하기</Button>
     </Form>
   );
 }
